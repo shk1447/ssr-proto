@@ -3,13 +3,16 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { useViewModel } from "x-view-model";
 import GlobalViewModel from "@/view-models/GlobalViewModel";
+import Link from "next/link";
 
 export default function Home() {
   const [state, send] = useViewModel(GlobalViewModel, ["count"]);
-  console.log(state.count);
+  console.log("server", state.count);
   return (
     <main className={styles.main}>
       <div className={styles.description}>
+        {state.count}
+        <Link href={"/level"}>Level</Link>
         <p>
           Get started by editing&nbsp;
           <code className={styles.code}>src/app/page.tsx</code>
